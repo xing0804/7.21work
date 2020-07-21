@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        li{
+            list-style: none;
+        }
+        .on {
+            position: relative;
+            height: 398px;
+            border: 1px solid #ccc;
+            width: 406px;
+        }
+
+        .on img {
+            height: 396px;
+            width: 396px;
+        }
+
+        .mask {
+            display: none;
+            width: 200px;
+            background-color: #ffffcc;
+            height: 200px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: .5;
+            cursor: move;
+        }
+
+        .big {
+            display: none;
+            height: 580px;
+            width: 592px;
+            position: absolute;
+            left: 444px;
+            top: 0;
+            background: salmon;
+            overflow: hidden;
+        }
+
+        .big img {
+            height: 800px;
+            width: 800px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .smbox {
+            height: 82px;
+            width: 418px;
+            float: left;
+            padding-top: 10px;
+            padding-left: 10px;
+        }
+
+        .smbox li {
+            float: left;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+        .mdbox {
+            height: 418px;
+            width: 418px;
+            background-color: #ccc;
+            float: left;
+            position: absolute;
+        }
+
+        .mdbox .mdimg {
+            height: 418px;
+            width: 418px;
+            display: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="on">
+        <div class="mdbox">
+            <img src="https://img.alicdn.com/imgextra/i1/772352677/O1CNA1hUYggj100e2b9df18d0be0f4df003m_!!1-0-picassodesign.jpg_430x430q90.jpg"
+                alt="" class="mdimg" style="display: block;">
+            <img src="https://img.alicdn.com/imgextra/i4/772352677/O1CN01MWylnD1Ve6m07Juqo_!!772352677.jpg_430x430q90.jpg"
+                alt="" class="mdimg">
+            <img src="https://img.alicdn.com/imgextra/i1/772352677/O1CN01TlTxZx1Ve6lV6NfpI_!!772352677.jpg_430x430q90.jpg"
+                alt="" class="mdimg">
+            <img src="https://img.alicdn.com/imgextra/i2/772352677/O1CN01zjkWZo1Ve6lCNQJ9G_!!772352677.jpg_430x430q90.jpg"
+                alt="" class="mdimg">
+            <img src="https://img.alicdn.com/imgextra/i3/772352677/O1CN01vDpx4z1Ve6lBS3JWq_!!772352677.jpg_430x430q90.jpg"
+                alt="" class="mdimg">
+        </div>
+        <div class="mask"></div>
+        <div class="big">
+            <img src="https://img.alicdn.com/imgextra/i1/772352677/O1CNA1hUYggj100e2b9df18d0be0f4df003m_!!1-0-picassodesign.jpg_430x430q90.jpg"
+                alt="" class="bigimg" style="display: block;">
+            <!-- <img src="https://img.alicdn.com/imgextra/i4/772352677/O1CN01MWylnD1Ve6m07Juqo_!!772352677.jpg_430x430q90.jpg"
+                alt="" class="bigimg">
+            <img src="https://img.alicdn.com/imgextra/i1/772352677/O1CN01TlTxZx1Ve6lV6NfpI_!!772352677.jpg_430x430q90.jpg"
+                alt="" class="bigimg">
+            <img src="https://img.alicdn.com/imgextra/i2/772352677/O1CN01zjkWZo1Ve6lCNQJ9G_!!772352677.jpg_430x430q90.jpg"
+                alt="" class="bigimg">
+            <img src="https://img.alicdn.com/imgextra/i3/772352677/O1CN01vDpx4z1Ve6lBS3JWq_!!772352677.jpg_430x430q90.jpg"
+                alt="" class="bigimg"> -->
+        </div>
+        
+    </div>
+    <ul class="smbox">
+        <li><img src="//img.alicdn.com/imgextra/i1/772352677/O1CNA1hUYggj100e2b9df18d0be0f4df003m_!!1-0-picassodesign.jpg_60x60q90.jpg"
+                alt="" class="smimg"></li>
+        <li><img src="//img.alicdn.com/imgextra/i4/772352677/O1CN01MWylnD1Ve6m07Juqo_!!772352677.jpg_60x60q90.jpg"
+                alt="" class="smimg"></li>
+        <li><img src="//img.alicdn.com/imgextra/i1/772352677/O1CN01TlTxZx1Ve6lV6NfpI_!!772352677.jpg_60x60q90.jpg"
+                alt="" class="smimg"></li>
+        <li><img src="//img.alicdn.com/imgextra/i2/772352677/O1CN01zjkWZo1Ve6lCNQJ9G_!!772352677.jpg_60x60q90.jpg"
+                alt="" class="smimg"></li>
+        <li><img src="//img.alicdn.com/imgextra/i3/772352677/O1CN01vDpx4z1Ve6lBS3JWq_!!772352677.jpg_60x60q90.jpg"
+                alt="" class="smimg"></li>
+    </ul>
+
+
+
+
+    <script>
+
+        //根据小图片选择中图片
+        var mdimg = document.querySelectorAll(".mdimg");
+        var smimg = document.querySelectorAll(".smimg");
+        // var bgimg = document.querySelectorAll(".bgimg");
+
+        for (let i = 0; i < smimg.length; i++) {
+            smimg[i].onmousemove = function () {
+                for (var j = 0; j < smimg.length; j++) {
+                    mdimg[j].style.display = "none";
+                    smimg[j].style.border = "";
+                    // bgimg[j].style.display = "none";
+                }
+                mdimg[i].style.display = "block";
+                smimg[i].style.border = "1px solid #000";
+                // bgimg[i].style.display = "block";
+            }
+
+        }
+
+        window.addEventListener('load', function () {
+            var on = document.querySelector('.on');
+            var mask = document.querySelector('.mask');
+            var big = document.querySelector('.big');
+
+            on.addEventListener('mouseover', function () {
+                mask.style.display = 'block';
+                big.style.display = 'block';
+            })
+            on.addEventListener('mouseout', function () {
+                mask.style.display = 'none';
+                big.style.display = 'none';
+            })
+            on.addEventListener('mousemove', function (e) {
+                var x = e.pageX - this.offsetLeft;
+                var y = e.pageY - this.offsetTop;
+                var maskMax = on.offsetWidth - mask.offsetWidth;
+                var maskX = x - mask.offsetWidth / 2;
+                var maskY = y - mask.offsetHeight / 2;
+                if (maskX <= 0) {
+                    maskX = 0;
+                } else if (maskX >= maskMax) {
+                    maskX = maskMax;
+                }
+                if (maskY <= 0) {
+                    maskY = 0;
+                } else if (maskY >= maskMax) {
+                    maskY = maskMax;
+                }
+                mask.style.left = maskX + 'px';
+                mask.style.top = maskY + 'px';
+
+
+                var bigimg = document.querySelector('.bigimg');
+                var bigMax = bigimg.offsetWidth - big.offsetWidth;
+                var bigX = maskX * bigMax / maskMax;
+                var bigY = maskY * bigMax / maskMax;
+                bigimg.style.left = -bigX + 'px';
+                bigimg.style.top = -bigY + 'px';
+            })
+        })
+
+    </script>
+
+</body>
+
+</html>
